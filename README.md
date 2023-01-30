@@ -8,4 +8,4 @@ rc.conf - Ranger FM
 
 htoprc - htop
 
-Preferences.sublime-settings - Sublime Test
+Preferences.sublime-settings - Sublime Text
