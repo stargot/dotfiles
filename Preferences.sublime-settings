@@ -1,0 +1,10 @@
+{
+	"color_scheme": "Monokai.sublime-color-scheme",
+	"font_face": "Cascadia Code",
+	"font_size": 13,
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"theme": "Default Dark.sublime-theme",
+}
