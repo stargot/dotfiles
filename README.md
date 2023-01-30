@@ -7,3 +7,5 @@ init.vim - Neovim
 rc.conf - Ranger FM
 
 htoprc - htop
+
+Preferences.sublime-settings - Sublime Test
