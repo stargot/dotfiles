@@ -21,20 +21,21 @@ set shiftwidth=2
 set clipboard+=unnamedplus
 
 filetype indent on
+syntax on
 
 inoremap jk <esc>
 
 call plug#begin()
-" color schemes
-Plug 'morhetz/gruvbox'
-
+Plug 'sainnhe/gruvbox-material'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'ap/vim-css-color'
-Plug 'tc50cal/vim-terminal'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'preservim/tagbar'
+Plug 'sheerun/vim-polyglot'
+Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Pocco81/AutoSave.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -42,60 +43,26 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'karloskar/poetry-nvim'
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-tree/nvim-tree.lua'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'romgrk/barbar.nvim'
 Plug 'xiyaowong/nvim-transparent'
-Plug 'justinmk/vim-sneak'
-Plug 'kassio/neoterm'
-Plug 'Yggdroot/indentLine'
-cal plug#end()
+Plug 'numToStr/FTerm.nvim'
+call plug#end()
 
 set termguicolors     " enable true colors support
-colorscheme gruvbox
+colorscheme gruvbox-material
 
-let g:sneak#label = 1
-let g:indentLine_setColors = 0
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+:lua require("poetry-nvim").setup()
 
-lua << EOF
-  require("poetry-nvim").setup()
-  require("nvim-tree").setup({
-    sort_by = "case_sensitive",
-    view = {
-      adaptive_size = true,
-      mappings = {
-        list = {
-          { key = "u", action = "dir_up" },
-        },
-      },
-    },
-    renderer = {
-      group_empty = true,
-    },
-    filters = {
-      dotfiles = true,
-    },
-  })
-EOF
+vmap <leader>a <Plug>(coc-codeaction-selected)<CR>
+nmap <leader>a <Plug>(coc-codeaction-selected)<CR>
 
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gv :vsp<CR><Plug>(coc-definition)<C-W>L
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: There's always complete item selected by default, you may want to enable
-" no select by `"suggest.noselect": true` in your configuration file.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+map <F2> :Neotree<CR>
+map <F3> :Telescope find_files<CR>
+map <F4> :lua require('FTerm').toggle()<CR>
