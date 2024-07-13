@@ -1,68 +1,54 @@
-set mouse=a
-set encoding=utf-8
-set number
-set noswapfile
-set nobackup
-set nowritebackup
-set updatetime=300
-set signcolumn=yes
-set scrolloff=7
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
 set autoindent
-set fileformat=unix
-set smartindent
-set tabstop=2
-set expandtab
-set shiftwidth=2
-
 set clipboard+=unnamedplus
+set encoding=utf-8
+set expandtab
+set fileformat=unix
+set mouse+=a
+set nobackup
+set noswapfile
+set nowritebackup
+set number
+set scrolloff=7
+set shiftwidth=4
+set signcolumn=yes
+set smartindent
+set softtabstop=4
+set tabstop=4
+set termguicolors
+set updatetime=300
 
 filetype indent on
 syntax on
 
 inoremap jk <esc>
+inoremap <F4> <ESC>gg=G
 
 call plug#begin()
+Plug 'jiangmiao/auto-pairs'
+Plug 'Pocco81/AutoSave.nvim'
+Plug 'romgrk/barbar.nvim'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python -m chadtree deps'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sainnhe/gruvbox-material'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'xiyaowong/nvim-transparent'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'karloskar/poetry-nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
 Plug 'ap/vim-css-color'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'sheerun/vim-polyglot'
-Plug 'jiangmiao/auto-pairs'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Pocco81/AutoSave.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'karloskar/poetry-nvim'
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'MunifTanjim/nui.nvim'
-Plug 'nvim-neo-tree/neo-tree.nvim'
-Plug 'romgrk/barbar.nvim'
-Plug 'xiyaowong/nvim-transparent'
-Plug 'numToStr/FTerm.nvim'
 call plug#end()
 
-set termguicolors     " enable true colors support
 colorscheme gruvbox-material
 
 :lua require("poetry-nvim").setup()
 
-vmap <leader>a <Plug>(coc-codeaction-selected)<CR>
-nmap <leader>a <Plug>(coc-codeaction-selected)<CR>
-
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gv :vsp<CR><Plug>(coc-definition)<C-W>L
-
-map <F2> :Neotree<CR>
-map <F3> :Telescope find_files<CR>
-map <F4> :lua require('FTerm').toggle()<CR>
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+map <F2> :CHADopen<CR>
+map <F3> :Telescope<CR>
