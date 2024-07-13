@@ -1,10 +1,14 @@
 {
-	"color_scheme": "Monokai.sublime-color-scheme",
-	"font_face": "Cascadia Code",
-	"font_size": 13,
+	"color_scheme": "Packages/ayu/ayu-dark.sublime-color-scheme",
+	"font_face": "JetBrainsMono NF",
+	"font_size": 11,
 	"ignored_packages":
 	[
 		"Vintage",
 	],
-	"theme": "Default Dark.sublime-theme",
+	"theme": "Adaptive.sublime-theme",
+	"update_check": false,
+	"index_files": true,
+    "rulers": [80,],
+	"default_encoding": "UTF-8",
 }
