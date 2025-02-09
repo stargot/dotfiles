@@ -30,12 +30,12 @@ Plug 'romgrk/barbar.nvim'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python -m chadtree deps'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sainnhe/gruvbox-material'
+Plug 'rebelot/kanagawa.nvim'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'xiyaowong/nvim-transparent'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'karloskar/poetry-nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'vim-airline/vim-airline'
@@ -44,9 +44,7 @@ Plug 'ap/vim-css-color'
 Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
-colorscheme gruvbox-material
-
-:lua require("poetry-nvim").setup()
+colorscheme kanagawa
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
