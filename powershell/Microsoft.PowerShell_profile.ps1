@@ -4,7 +4,7 @@ Import-Module PSReadLine
 Import-Module Terminal-Icons
 
 # Init OhMyPosh
-oh-my-posh init pwsh --config 'C:\Users\starg\theme.omp.json' | Invoke-Expression
+oh-my-posh init pwsh --config '~/theme.omp.json' | Invoke-Expression
 
 # Autocomplete
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
