@@ -1,9 +1,9 @@
-# Импорт модулей
+# Modules import
 Import-Module posh-git
 Import-Module PSReadLine
 Import-Module Terminal-Icons
 
-# Автокомплит
+# Autocompletions
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 volta completions powershell | Out-String | Invoke-Expression
 
