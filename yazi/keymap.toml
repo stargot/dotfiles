@@ -1,26 +1,26 @@
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = ["g", "s"]
 run  = "cd ~/Desktop"
-desc = "Go to Desktop"
+desc = "Go to ~/Desktop"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = ["g", "p"]
 run  = "cd E:/Projects"
-desc = "Go to Projects Folder"
+desc = "Go to E:/Projects"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "d" ]
 run = "cd 'D:\\'"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "e" ]
 run = "cd 'E:\\'"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "f" ]
 run = "cd 'F:\\'"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "t"
 run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
